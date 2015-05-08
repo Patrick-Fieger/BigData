@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="flight">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width" name="viewport">
+    <title>Flightradar</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+    <header></header>
+    <div class="container">
+        <div ng-view></div>
+    </div>
+
+	<footer></footer>
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.min.js"></script>
+	<script src="js/angular-animate.js"></script>
+	<script src="js/angular-sanitize.js"></script>
+	<script src="controller/index.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
