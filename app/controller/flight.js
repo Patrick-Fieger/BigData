@@ -19,7 +19,7 @@ var getDetails = function (id, dataSet){
 	});
 }
 
-var initFlightdata = function(){
+var initFlightdata = function(req,res){
 	request(api_url, function (error, response, body) {
 	  if (!error && response.statusCode == 200) {
 	  	var json = JSON.parse(body)
@@ -37,7 +37,11 @@ var initFlightdata = function(){
 		}
 	  }
 	});
+
+	res.send('message').status(200).end();
 }
+
+
 
 
 module.exports = {
