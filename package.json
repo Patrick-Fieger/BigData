@@ -2,17 +2,17 @@
   "name": "Big-Data-Flightradar",
   "version": "0.1.0",
   "devDependencies": {
+    "async": "^1.0.0",
+    "body-parser": "^1.12.0",
+    "dateformat": "^1.0.11",
+    "express": "~4.6.1",
     "fs": "0.0.2",
     "fs-extra": "^0.18.1",
-    "mongoose": "^4.0.1",
+    "gm": "^1.17.0",
+    "mongoose": "~4.0",
+    "morgan": "~1.1.1",
     "request": "^2.55.0",
     "require": "^2.4.17",
-    "body-parser": "^1.12.0",
-	"dateformat": "^1.0.11",
-	"express": "~4.6.1",
-	"gm": "^1.17.0",
-	"mongoose": "~4.0",
-	"morgan": "~1.1.1",
-	"uuid": "^2.0.1"
+    "uuid": "^2.0.1"
   }
 }
