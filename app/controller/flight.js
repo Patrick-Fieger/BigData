@@ -53,6 +53,20 @@ var getData = function (req,res){
 	});
 }
 
+var getSimpleData = function (req,res){
+	var json;
+	var flightData = [];
+
+	request(api_url, function (error, response, body) {
+	  if (!error && response.statusCode == 200) {
+	  	json = JSON.parse(body)
+	  	
+		res.send(json).status(200).end();
+	  }
+	});
+}
+
 module.exports = {
-	getData : getData
+	getData : getData,
+	getSimpleData : getSimpleData
 }
