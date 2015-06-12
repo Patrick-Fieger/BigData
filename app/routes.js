@@ -1,6 +1,7 @@
 var flight = require('./controller/flight')
 
 module.exports = function(app){
-	app.get('/airlines', flight.getData);
+	app.get('/data', flight.getData);
+	app.get('/airlines', flight.getAirlines);
 	app.get('/overview', flight.getSimpleData);
 }
