@@ -1,0 +1,24 @@
+<div class="clock" on-finish-render="initCarousel()"></div>
+
+<h2>Emissionen: {{emissions.kerosin.estimated}} l/100km</h2>
+<h2>CO2: {{emissions.dioxide.estimated}} kg/100km</h2>
+
+
+<div id="radar">
+<table>
+	<thead>
+		<th>Name</th>
+		<th>ground</th>
+		<th>air</th>
+		<th>gesamt</th>
+	</thead>
+	<tbody>
+	<tr class="airline" ng-repeat="(key, obj) in airlines">
+		<td>{{obj.name}}</td>
+		<td>{{obj.ground}}</td>
+		<td>{{obj.air}}</td>
+		<td>{{obj.amount}}</td>
+	</tr>
+	</tbody>
+</table>
+</div>
