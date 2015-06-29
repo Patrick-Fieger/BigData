@@ -13,12 +13,17 @@
 	<![endif]-->
 </head>
 <body>
+	<video autoplay loop muted controls="false">
+		<source src="video/2.mp4" type="video/mp4">
+	</video>
+	<div class="video_overlay"></div>
+
     <header></header>
     <div class="container">
         <div ng-view></div>
     </div>
 
-	<footer></footer>
+	<p class="icon-info info_authors"></p>
 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="js/angular.min.js"></script>
 	<script src="js/angular-route.min.js"></script>
