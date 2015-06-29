@@ -4,7 +4,7 @@ body {
 	font-size: 14px;
 	font-family: Lato, sans-serif;
 }
-<<<<<<< HEAD
+
 
 .info_authors{
   -webkit-transition: all 0.3s;
@@ -147,7 +147,7 @@ video {
 	right: 10px;
 	position: absolute;
 	width: 230px;
-	background-color: rgb(249, 247, 237);
+	background-color: rgb(255, 255, 255);
 	box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 #control-pane > div {
@@ -160,7 +160,7 @@ video {
 	width: 100%;
 	margin: 0;
 	padding: 12px 0 0 0;
-	border-bottom: 1px solid #aac789;
+	border-bottom: 1px solid #fff;
 	background: transparent;
 }
 h2, h3, h4 {
@@ -189,6 +189,6 @@ input[type=range] {
 
 
 #visualisation { 
-	width: 500px;
-	height: 500px;
+	width: 95vw;
+	height: 95vh;
 }
