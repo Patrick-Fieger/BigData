@@ -7,34 +7,70 @@ var index = ['$scope','$http','planeGraph',function($scope,$http,planeGraph){
 	var planesArray = [];
 	$scope.planeTypes = {};
 	var s = new sigma('visualisation');
+		s.settings({
+			defaultNodeColor: '#fff',
+			edgeColor: '#ccc',
+			defaultEdgeColor: '#ccc'
+		})
+
+
+	function getRandomColor() {
+		var letters = '0123456789ABCDEF'.split('');
+		var color = '#';
+		for (var i = 0; i < 6; i++ ) {
+			color += letters[Math.floor(Math.random() * 16)];
+		}
+		return color;
+	}
 
 
 	$http.get('/airlines').success(function(result,status){
 
 		var prevent = {}
 		for(var a in result) {
+			var airlineColor = getRandomColor();
+			var prevent = {};
 			
-			for(var i = 0; i < result[a].planes.ground.length; i++){
-				var planeground = result[a].planes.ground[i][13];
+			for(var i = 0; i < result[a].planes.air.length; i++){
+				var planeground = result[a].planes.air[i][13];
+				if(planeground != ''){
+					if(!prevent[planeground] || planeground != '' || prevent[planeground] != true){
+						prevent[''+planeground] = true;
 
-				console.log( planeground + ': ' + prevent[planeground]); 
+						var obj = {
+							id: planeground,
+							x: Math.floor((Math.random() * window.outerWidth) + 1),
+							y: Math.floor((Math.random() * window.outerHeight) + 1),
+							z: -100,
+							size: 0,
+							color: airlineColor,
+						}
 
-
-
-				if(!prevent[planeground] || prevent[planeground] != true){
-					prevent[planeground] = true;
-					var obj = {
-						id: planeground,
-						//label: planeground,
-						x: Math.floor((Math.random() * 30) + 1),
-						y: Math.floor((Math.random() * 30) + 1),
-						size: Math.floor((Math.random() * 5) + 1)
+						planesArray.push(obj);
+						s.graph.addNode(obj);
 					}
-
-					planesArray.push(obj);
-					s.graph.addNode(obj);
 				}
 			}
+			
+			/*var prevent = {}
+			for(var i = 0; i < result[a].planes.ground.length; i++){
+				var planeground = result[a].planes.ground[i][13];
+				if(planeground != ''){
+					if(!prevent[planeground] || planeground != '' || prevent[planeground] != true){
+						prevent[''+planeground] = true;
+						
+						var c = i + 1;
+							if(c > result[a].planes.ground.length-1) c = 0;
+
+
+						s.graph.addEdge({
+							id: result[a].planes.ground[i][13] + '-' + result[a].planes.ground[c][13],
+							source: result[a].planes.ground[i][13],
+							target: result[a].planes.ground[c][13]
+						});
+					}
+				}
+			}*/
 		}
 
 
@@ -48,6 +84,7 @@ var index = ['$scope','$http','planeGraph',function($scope,$http,planeGraph){
 		source: 'n0',
 		target: 'n1'
 		});*/
+
 
 		s.refresh();
 
