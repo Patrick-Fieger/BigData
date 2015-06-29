@@ -16,11 +16,16 @@ var index = ['$scope','$http','planeGraph',function($scope,$http,planeGraph){
 			
 			for(var i = 0; i < result[a].planes.ground.length; i++){
 				var planeground = result[a].planes.ground[i][13];
-				if(!prevent[planeground]){
-					prevent[planeground] = i;
+
+				console.log( planeground + ': ' + prevent[planeground]); 
+
+
+
+				if(!prevent[planeground] || prevent[planeground] != true){
+					prevent[planeground] = true;
 					var obj = {
 						id: planeground,
-						label: planeground,
+						//label: planeground,
 						x: Math.floor((Math.random() * 30) + 1),
 						y: Math.floor((Math.random() * 30) + 1),
 						size: Math.floor((Math.random() * 5) + 1)
@@ -49,9 +54,9 @@ var index = ['$scope','$http','planeGraph',function($scope,$http,planeGraph){
 	});
 
 
-	$http.get('/overview').success(function(result,status){
+	/*$http.get('/overview').success(function(result,status){
 		$scope.aircrafts = result;
-	});
+	});*/
 
 	$http.get('/emissions').success(function(result,status){
 		$scope.emissions = result;
