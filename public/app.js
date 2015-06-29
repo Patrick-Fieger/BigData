@@ -26,8 +26,9 @@ app.run(function($rootScope) {
 			$('.info_authors').removeClass('icon-cross').addClass('icon-info');
 			$('.info_wrapper').toggleClass('active');
 		}
-
 	}
+
+	$rootScope.showLoader = 1;
 });
 
 

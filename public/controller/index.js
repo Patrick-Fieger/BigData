@@ -1,4 +1,4 @@
-var index = ['$scope','$http','planeGraph',function($scope,$http,planeGraph){
+var index = ['$scope','$rootScope','$http','planeGraph',function($scope,$rootScope,$http,planeGraph){
 
 	$scope.emissions = {};
 	$scope.airlines = [];
@@ -33,7 +33,7 @@ var index = ['$scope','$http','planeGraph',function($scope,$http,planeGraph){
 			}
 		}
 
-
+		$rootScope.showLoader = 0;
 		//$scope.planes = planesArray;
 		// console.log($scope.planes);
 		//console.log($scope.airlines);

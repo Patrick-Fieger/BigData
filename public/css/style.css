@@ -7,7 +7,8 @@ body {
 
 
 .info_authors,
-.info_wrapper{
+.info_wrapper,
+hr{
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -240,6 +241,10 @@ hr {
           animation: hr-width 1s ease-in-out infinite;
   -webkit-animation-direction: alternate;
           animation-direction: alternate;
+}
+
+hr.hide{
+	display: none;
 }
 
 @-webkit-keyframes hr-width {
