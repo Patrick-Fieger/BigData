@@ -13,8 +13,6 @@ var index = ['$scope','$http','planeGraph',function($scope,$http,planeGraph){
 
 		var prevent = {}
 		for(var a in result) {
-
-
 			
 			for(var i = 0; i < result[a].planes.ground.length; i++){
 				var planeground = result[a].planes.ground[i][13];
@@ -32,9 +30,6 @@ var index = ['$scope','$http','planeGraph',function($scope,$http,planeGraph){
 					s.graph.addNode(obj);
 				}
 			}
-
-			
-
 		}
 
 
