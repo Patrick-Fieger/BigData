@@ -71,11 +71,12 @@
 
     <header></header>
     <div class="container">
-        <div ng-view></div>
+        <div ng-view>
+        </div>
     </div>
 	<div id="container">
 		<div id="graph-container"></div>
-		<div id="control-pane">
+		<!-- <div id="control-pane">
 			<h2 class="underline">filters</h2>
 
 			<div>
@@ -94,7 +95,7 @@
 			<button id="export-btn">Export</button>
 			</div>
 			<div id="dump" class="hidden"></div>
-		</div>
+		</div> -->
 	</div>
 
 
@@ -102,10 +103,19 @@
 
 
 	<footer>
+		<div class="info_wrapper">
+			<h1>Authors</h1>
+			<div class="col">
+				<img src="img/kai.jpg" height="400" width="400">
+				<h2>Kai Zwier</h2>
+			</div>
+			<div class="col">
+				<img src="img/patrick.jpg" height="400" width="400">
+				<h2>Patrick Fieger</h2>
+			</div>
+		</div>
 		<p class="icon-info info_authors" ng-click="toggleInfoView()"></p>	
 	</footer>
-
-	
 
 
 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
