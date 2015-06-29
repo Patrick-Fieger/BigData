@@ -228,3 +228,34 @@ input[type=range] {
 	width: 95vw;
 	height: 95vh;
 }
+
+
+hr {
+  position: fixed;
+  top: 50%;
+  width: 50%;
+  border: 1px solid #FFCD57;
+  opacity: 0.5;
+  -webkit-animation: hr-width 1s ease-in-out infinite;
+          animation: hr-width 1s ease-in-out infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+@-webkit-keyframes hr-width {
+  from {
+    margin-left:  12.5%;
+  }
+  to {
+    margin-left: 37.5%;
+  }
+}
+
+@keyframes hr-width {
+  from {
+    margin-left:  12.5%;
+  }
+  to {
+    margin-left: 37.5%;
+  }
+}
