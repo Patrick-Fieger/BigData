@@ -1,4 +1,4 @@
-var index = ['$scope','$http','planeGraph',function($scope,$http,planeGraph){
+var index = ['$scope','$rootScope','$http','planeGraph',function($scope,$rootScope,$http,planeGraph){
 
 	$scope.emissions = {};
 	$scope.airlines = [];
@@ -55,6 +55,7 @@ var index = ['$scope','$http','planeGraph',function($scope,$http,planeGraph){
 			/*var prevent = {}
 			for(var i = 0; i < result[a].planes.ground.length; i++){
 				var planeground = result[a].planes.ground[i][13];
+
 				if(planeground != ''){
 					if(!prevent[planeground] || planeground != '' || prevent[planeground] != true){
 						prevent[''+planeground] = true;
@@ -68,12 +69,13 @@ var index = ['$scope','$http','planeGraph',function($scope,$http,planeGraph){
 							source: result[a].planes.ground[i][13],
 							target: result[a].planes.ground[c][13]
 						});
+
 					}
 				}
 			}*/
 		}
 
-
+		$rootScope.showLoader = 0;
 		//$scope.planes = planesArray;
 		// console.log($scope.planes);
 		//console.log($scope.airlines);
