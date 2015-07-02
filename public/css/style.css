@@ -36,7 +36,7 @@ video {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(0,0,0,0.8);
+	background:#20112D;
 	z-index: -99;
 }
 
@@ -225,20 +225,11 @@ input[type=range] {
 }
 
 
-#visualisation {
-	top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      position: absolute;
-}
-
-
 hr {
   position: fixed;
   top: 50%;
   width: 50%;
-  border: 1px solid #FFCD57;
+  border: 1px solid #FF583D;
   opacity: 0.5;
   -webkit-animation: hr-width 1s ease-in-out infinite;
           animation: hr-width 1s ease-in-out infinite;
@@ -267,3 +258,113 @@ hr.hide{
     margin-left: 37.5%;
   }
 }
+
+
+
+#radarview {
+	height: 600px;
+    margin: 100px auto 0;
+    position: relative;
+    width: 800px;
+}
+
+	#radarview .wrapper {
+		margin-left: -300px;
+	}
+
+	#radarview div.long {
+		/*margin-bottom: 10px;*/
+		width: 1px;
+		background: rgba(255,255,255,0.1);
+		height: 300px;
+		position:absolute;
+		left:300px;
+		top:300px;
+		transition: all 0.3s ease;
+	}
+
+		#radarview .plane {
+			border-radius: 3px;
+			width: 7px;
+			height: 7px;
+			margin-left: -4px;
+			background: #7F0032;
+			position: absolute;
+			z-index: 2;
+			-webkit-animation: planeAnim 3s ease;
+			-moz-animation: planeAnim 3s ease;
+			animation: planeAnim 3s ease;
+			transform: translateY(0);
+			box-shadow: 0 0 3px rgba(0,0,0,0.5);
+		}
+
+		#radarview .plane.max { background: #C92A3E;}
+
+		#radarview .amount {
+			border-radius: 3px;
+			z-index: 1;
+			position: absolute;
+			width: 2px;
+			margin-left: -2px;
+			background: #530030;
+			position: absolute;
+			height:0;
+
+			-webkit-animation: heightAnim 2s ease;
+			-moz-animation: heightAnim 2s ease;
+			animation: heightAnim 2s ease;
+		}
+
+
+		@-webkit-keyframes planeAnim {
+			0% { transform: translateY(0); }
+		}
+		@-moz-keyframes planeAnim {
+			0% { transform: translateY(0); }
+		}
+		keyframes planeAnim {
+			0% { transform: translateY(0); }
+		}
+
+		@-webkit-keyframes heightAnim {
+			0% { height: 0; }
+		}
+		@-moz-keyframes heightAnim {
+			0% { height: 0; }
+		}
+		keyframes heightAnim {
+			0% { height: 0; }
+		}
+
+	.circle {
+		border: 2px solid rgba(255, 255, 255, 0.05);
+		border-radius: 50%;
+		height: 398px;
+		position: absolute;
+		transform: translate(100px, 250px);
+		width: 398px;
+	}
+
+	.circle.v2 {
+		 height: 518px;
+    transform: translate(40px, 190px);
+    width: 518px;
+	}
+
+	.circle.v3 {
+		 height: 638px;
+    transform: translate(-20px, 130px);
+    width: 638px;
+	}
+
+	.circle.v4 {
+		height: 758px;
+    transform: translate(-80px, 70px);
+    width: 758px;
+	}
+
+	.circle.v5 {
+		height: 878px;
+    transform: translate(-140px, 10px);
+    width: 878px;
+	}

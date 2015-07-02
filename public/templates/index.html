@@ -21,4 +21,29 @@
 </table>
 </div> -->
 
-<div id="visualisation"></div>
+
+<div id="radarview">
+	<div class="circle"></div>
+	<div class="circle v2"></div>
+	<div class="circle v3"></div>
+	<div class="circle v4"></div>
+	<div class="circle v5"></div>
+	<div class="wrapper">
+	<!-- <div class="long" ng-repeat="key in keys(test)" style="transform: rotate({{key}}deg) translateY(250px)"> 
+	<div class="long" ng-repeat="key in keys(test)">
+		<div class="plane" data-y="{{airplane.y}}" style="transform: translateY({{airplane.y}}px);" ng-repeat="airplane in test[key]"></div>
+	</div>-->
+
+
+
+	<div class="long" ng-repeat="key in keys(output)" style="transform: rotate({{key}}deg) translateY(350px)">
+	<!-- <div class="long" ng-repeat="key in keys(output)"> -->
+		<div class="plane min" style="transform: translateY({{output[key].min.y}}px);"></div>
+		<div class="plane max" style="transform: translateY({{output[key].max.y}}px);"></div>
+		<div class="amount" style="height: {{output[key].min.y}}px;"></div> 
+	</div>
+
+
+	</div>
+</div>
+

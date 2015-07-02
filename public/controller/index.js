@@ -6,13 +6,23 @@ var index = ['$scope','$rootScope','$http','planeGraph',function($scope,$rootSco
 	$scope.planes = [];
 	var planesArray = [];
 	$scope.planeTypes = {};
-	var s = new sigma('visualisation');
-		s.settings({
-			defaultNodeColor: '#fff',
-			edgeColor: '#ccc',
-			defaultEdgeColor: '#ccc'
-		})
 
+	var longs = {};
+
+
+	$scope.output = {};
+
+
+Array.max = function( array ){
+return Math.max.apply( Math, array );
+};
+Array.min = function( array ){
+return Math.min.apply( Math, array );
+};
+
+	$scope.keys = function(obj){
+		return obj? Object.keys(obj) : [];
+	}
 
 	function getRandomColor() {
 		var letters = '0123456789ABCDEF'.split('');
@@ -23,72 +33,70 @@ var index = ['$scope','$rootScope','$http','planeGraph',function($scope,$rootSco
 		return color;
 	}
 
+	function map_range(value, low1, high1, low2, high2) {
+		return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+	}
+
 
 	$http.get('/airlines').success(function(result,status){
+		var yValues=[];
 
 		var prevent = {}
 		for(var a in result) {
 			var airlineColor = getRandomColor();
-			var prevent = {};
-			
+
 			for(var i = 0; i < result[a].planes.air.length; i++){
 				var planeground = result[a].planes.air[i][13];
-				if(planeground != ''){
-					if(!prevent[planeground] || planeground != '' || prevent[planeground] != true){
-						prevent[''+planeground] = true;
 
-						var obj = {
-							id: planeground,
-							x: Math.floor((Math.random() * window.outerWidth) + 1),
-							y: Math.floor((Math.random() * window.outerHeight) + 1),
-							z: -100,
-							size: 0,
-							color: airlineColor,
-						}
-
-						planesArray.push(obj);
-						s.graph.addNode(obj);
-					}
+				var obj = {
+					id: planeground,
+					label: planeground,
+					x: result[a].planes.air[i][2],
+					y: (result[a].planes.air[i][1]-47) * 15,
+					size: 1,
+					color: airlineColor,
 				}
+
+				var key = parseInt(result[a].planes.air[i][2]);
+					/*key = map_range(key, -180,180,0,360);
+					key += 90;*/
+
+				if(typeof longs[key] === 'undefined') longs[key] = new Array(); 
+
+				longs[key].push(obj);
+
 			}
-			
-			/*var prevent = {}
-			for(var i = 0; i < result[a].planes.ground.length; i++){
-				var planeground = result[a].planes.ground[i][13];
-
-				if(planeground != ''){
-					if(!prevent[planeground] || planeground != '' || prevent[planeground] != true){
-						prevent[''+planeground] = true;
-						
-						var c = i + 1;
-							if(c > result[a].planes.ground.length-1) c = 0;
-
-
-						s.graph.addEdge({
-							id: result[a].planes.ground[i][13] + '-' + result[a].planes.ground[c][13],
-							source: result[a].planes.ground[i][13],
-							target: result[a].planes.ground[c][13]
-						});
-
-					}
-				}
-			}*/
 		}
 
+
+		for(var key in longs){
+			// reset
+			var yMin = { y: 0 },
+				yMax = { y: 0 };
+
+			
+
+			for(var j = 0; j < longs[key].length; j++){
+				
+				if(longs[key][j].y < yMin.y || yMin.y == 0) yMin = longs[key][j];
+				if(longs[key][j].y > yMax.y || yMax.y == 0) yMax = longs[key][j];
+
+			}
+
+			$scope.output[key] = {
+				amount: longs[key].length,
+				min: yMin,
+				max: yMax
+			};
+		}
+
+
+		console.log(longs);
+		console.log($scope.output);
+
+		$scope.test = longs;
+
 		$rootScope.showLoader = 0;
-		//$scope.planes = planesArray;
-		// console.log($scope.planes);
-		//console.log($scope.airlines);
-		// console.log($scope.planeTypes);
-
-		/*s.graph.addEdge({
-		id: 'e0',
-		source: 'n0',
-		target: 'n1'
-		});*/
-
-
-		s.refresh();
 
 	});
 
