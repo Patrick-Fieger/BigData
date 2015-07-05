@@ -58,8 +58,7 @@ return Math.min.apply( Math, array );
 				}
 
 				var key = parseInt(result[a].planes.air[i][2]);
-					/*key = map_range(key, -180,180,0,360);
-					key += 90;*/
+					key = map_range(key, -180,180,0,360) * -1;
 
 				if(typeof longs[key] === 'undefined') longs[key] = new Array(); 
 
@@ -98,8 +97,20 @@ return Math.min.apply( Math, array );
 
 		$rootScope.showLoader = 0;
 
-	});
 
+
+		setTimeout(calcHeight, 1000);
+
+	});
+	
+	var calcHeight = function(){
+		console.log('timeout func');
+		var $top = $($('.wrapper > div[data-rot=177], .wrapper > div[data-rot=178], .wrapper > div[data-rot=179], .wrapper > div[data-rot=180], .wrapper > div[data-rot=181], .wrapper > div[data-rot=182]')[0]);
+		var $bottom = $('.wrapper > div:eq(0)');
+
+		var height = $bottom.height() + $bottom.offset().top - $top.offset().top;
+		$('.wrapper').height(height);
+	}
 
 	/*$http.get('/overview').success(function(result,status){
 		$scope.aircrafts = result;

@@ -22,12 +22,27 @@
 </div> -->
 
 
+	<div class="title">
+		<h1>International Flightdata</h1>
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus.</p>
+	</div>
+
 <div id="radarview">
+	<div class="circle legend">
+		<span class="value">-180</span>
+		<span class="value v2">-90</span>
+		<span class="value v3">0</span>
+		<span class="value v4">90</span>
+		<span class="value v5">longitude</span>
+	</div>
 	<div class="circle"></div>
 	<div class="circle v2"></div>
 	<div class="circle v3"></div>
 	<div class="circle v4"></div>
 	<div class="circle v5"></div>
+	<div class="circle v6"></div>
+	<div class="circle v7"></div>
+	<div class="circle v8"></div>
 	<div class="wrapper">
 	<!-- <div class="long" ng-repeat="key in keys(test)" style="transform: rotate({{key}}deg) translateY(250px)"> 
 	<div class="long" ng-repeat="key in keys(test)">
@@ -35,8 +50,16 @@
 	</div>-->
 
 
+	<div class="long legend" style="transform: rotate(270deg) translateY(350px);">
+		<span class="value">-90</span>
+		<span class="value v2">-45</span>
+		<span class="value v3">0</span>
+		<span class="value v4">45</span>
+		<span class="value v5">90</span>
+		<span class="value v6">latitute</span>
+	</div>
 
-	<div class="long" ng-repeat="key in keys(output)" style="transform: rotate({{key}}deg) translateY(350px)">
+	<div class="long" data-rot="{{key}}" ng-repeat="key in keys(output)" style="transform: rotate({{key}}deg) translateY(350px)">
 	<!-- <div class="long" ng-repeat="key in keys(output)"> -->
 		<div class="plane min" style="transform: translateY({{output[key].min.y}}px);"></div>
 		<div class="plane max" style="transform: translateY({{output[key].max.y}}px);"></div>
