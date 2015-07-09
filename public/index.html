@@ -75,47 +75,12 @@
         </div>
     </div>
 
-<!-- 	<div id="container">
-	<div id="graph-container"></div>
-	<div id="control-pane">
-		<h2 class="underline">filters</h2>
+	<div class="spinner" ng-class="{hide : showLoader == 0}">
+  		<div class="dot1"></div>
+  		<div class="dot2"></div>
+	</div>
 
-		<div>
-		<h3>min degree <span id="min-degree-val">0</span></h3>
-		0 <input id="min-degree" type="range" min="0" max="0" value="0"> <span id="max-degree-value">0</span><br>
-		</div>
-		<div>
-		<h3>node category</h3>
-		<select id="node-category">
-		<option value="" selected>All categories</option>
-		</select>
-		</div>
-		<span class="line"></span>
-		<div>
-		<button id="reset-btn">Reset filters</button>
-		<button id="export-btn">Export</button>
-		</div>
-		<div id="dump" class="hidden"></div>
- -->
-
-	<hr ng-class="{hide : showLoader == 0}"/>
-
-
-
-	<footer>
-		<div class="info_wrapper">
-			<h1>Authors</h1>
-			<div class="col">
-				<img src="img/kai.jpg" height="400" width="400">
-				<h2>Kai Zwier</h2>
-			</div>
-			<div class="col">
-				<img src="img/patrick.jpg" height="400" width="400">
-				<h2>Patrick Fieger</h2>
-			</div>
-		</div>
-		<p class="icon-info info_authors" ng-click="toggleInfoView()"></p>	
-	</footer>
+	
 
 
 	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>

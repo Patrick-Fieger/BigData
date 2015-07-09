@@ -8,11 +8,34 @@ body {
 
 .info_authors,
 .info_wrapper,
-hr{
+.spinner,
+#radarview .wrapper,
+.title,
+footer{
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
+}
+
+footer{
+	opacity: 0;
+}
+
+footer.active{
+	opacity: 1
+}
+
+.circle{
+	-webkit-transition: opacity 3s;
+  -moz-transition: opacity 3s;
+  -o-transition: opacity 3s;
+  transition: opacity 3s;
+  opacity: 0 !important
+}
+
+.circle.active{
+	opacity: 1 !important
 }
 
 video {
@@ -37,6 +60,7 @@ video {
 	width: 100%;
 	height: 100%;
 	background:#20112D;
+	opacity: 0.98;
 	z-index: -99;
 }
 
@@ -225,20 +249,68 @@ input[type=range] {
 }
 
 
-hr {
-  position: fixed;
-  top: 50%;
-  width: 50%;
-  border: 1px solid #FF583D;
-  opacity: 0.5;
-  -webkit-animation: hr-width 1s ease-in-out infinite;
-          animation: hr-width 1s ease-in-out infinite;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
+.spinner {
+  	
+  opacity: 1;
 }
 
-hr.hide{
-	display: none;
+.spinner {
+  
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -50px
+  text-align: center;
+  
+  -webkit-animation: rotate 2.0s infinite linear;
+  animation: rotate 2.0s infinite linear;
+}
+
+.dot1, .dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: #fff;
+  border-radius: 100%;
+  
+  -webkit-animation: bounce 2.0s infinite ease-in-out;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+
+.dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
+@keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+@-webkit-keyframes bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+
+
+.spinner.hide{
+	opacity: 0;
+	visibility: hidden;
 }
 
 @-webkit-keyframes hr-width {
@@ -270,6 +342,11 @@ hr.hide{
 
 	#radarview .wrapper {
 		margin-left: -300px;
+		opacity: 0;
+	}
+
+	#radarview .wrapper.active{
+		opacity: 1;
 	}
 
 	#radarview div.long {
@@ -291,11 +368,14 @@ hr.hide{
 			background: #7F0032;
 			position: absolute;
 			z-index: 2;
+			transform: translateY(0);
+			box-shadow: 0 0 3px rgba(0,0,0,0.5);
+		}
+
+		#radarview .plane.active{
 			-webkit-animation: planeAnim 3s ease;
 			-moz-animation: planeAnim 3s ease;
 			animation: planeAnim 3s ease;
-			transform: translateY(0);
-			box-shadow: 0 0 3px rgba(0,0,0,0.5);
 		}
 
 		#radarview .plane.max { background: #C92A3E;}
@@ -310,6 +390,10 @@ hr.hide{
 			position: absolute;
 			height:0;
 
+			
+		}
+
+		#radarview .amount.active{
 			-webkit-animation: heightAnim 2s ease;
 			-moz-animation: heightAnim 2s ease;
 			animation: heightAnim 2s ease;
@@ -500,6 +584,11 @@ hr.hide{
     padding: 0 2.5%;
     z-index: 100;
     color: #c92a3e;
+    opacity: 0;
+}
+
+.title.active{
+	opacity: 1;
 }
 
 	.title p {
